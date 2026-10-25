@@ -1,16 +1,16 @@
-import express from "express"
-import cors from "cors"
-import "dotenv/config"
-import BreedingLogRouter from "./routes/breeding_logRoutes.js"
+import express from "express";
+import cors from "cors";
+import "dotenv/config";
+import BreedingLogRouter from "./routes/breeding_logRoutes.js";
 const app = express();
-app.use(cors())
-app.use(BreedingLogRouter)
+app.use(cors());
+app.use(express.json());
+app.use(BreedingLogRouter);
 
 app.get("/health", (req, res) => {
-  return res.status(200).json("server is running")
-  
+  return res.status(200).json("server is running");
 });
 
-
-
-app.listen(process.env.PORT, () => console.log("Server is running on port: 3001"))
+app.listen(process.env.PORT, () =>
+  console.log("Server is running on port: 3001"),
+);

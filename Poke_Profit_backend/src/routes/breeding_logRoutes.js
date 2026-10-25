@@ -1,13 +1,12 @@
-
 import { Router } from "express";
-import { 
-    getBreedingLogs } from "../controllers/breeding_logControllers";
+import {
+  getBreedingLogs,
+  postBreedingLogs,
+} from "../controllers/breeding_logControllers";
 
-const router = Router()
-router.get("/logs",getBreedingLogs)
+const router = Router();
+router.get("/logs", getBreedingLogs);
 
+router.post("/logs", postBreedingLogs);
 
-
-export default router
-
-
+export default router;

@@ -43,3 +43,10 @@ create table items_used (
   item_name varchar(50) not null,
   cost bigint default 0
 );
+
+alter table breeding_logs
+
+add column p1_cost bigint not null default 0,
+add column p2_cost bigint not null default 0;
+
+ALTER TABLE breeding_logs DROP COLUMN parent_cost;
