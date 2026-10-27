@@ -1,23 +1,19 @@
-import { useEffect } from "react";
-import { useLogStore } from "./store/useLogStore";
-import { LogCard } from "./components/LogCard";
-
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import LogsPage from "./pages/LogsPage";
+import StartBreedingPage from "./pages/StartBreedingPage";
 function App() {
-  const logs = useLogStore((state) => state.logs);
-  const fetchLogs = useLogStore((state) => state.fetchLogs);
-
-  useEffect(() => {
-    fetchLogs();
-  }, []);
-
   return (
-    <div className="p-6">
-      <h1 className="text-4xl font-bold text-blue-500">Poke Profit</h1>
-      {logs.map((log) => (
-        <LogCard key={log.id} species={log.species} status={log.status} />
-      ))}
-    </div>
+    <BrowserRouter>
+      <nav className="p-4 flex gap-4">
+        <Link to="/">My Logs</Link>
+        <Link to="/start">Start Breeding</Link>
+      </nav>
+
+      <Routes>
+        <Route path="/" element={<LogsPage />} />
+        <Route path="/start" element={<StartBreedingPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
-
 export default App;
