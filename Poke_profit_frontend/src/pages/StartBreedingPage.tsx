@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 const StartBreedingPage = () => {
+  const navigate = useNavigate();
   const [species, setSpecies] = useState("");
   const [slot_number, setSlot_number] = useState("");
 
@@ -13,7 +14,7 @@ const StartBreedingPage = () => {
     e.preventDefault();
     await fetch("http://localhost:3001/logs", {
       method: "POST",
-      headers: { "Content-type": "application/json" },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         user_id: "7abab647-c7e6-4f06-84e4-2a3a682dbf36",
         species,
@@ -24,6 +25,7 @@ const StartBreedingPage = () => {
         slot_number: Number(slot_number),
       }),
     });
+    navigate("/");
   };
 
   return (
